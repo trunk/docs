@@ -1,55 +1,200 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
-  "name": "Mint Starter Kit",
+  "theme": "willow",
+  "name": "Trunk",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#09090b",
+    "light": "#FAFAFA",
+    "dark": "#09090b"
   },
+"appearance": {
+  "strict": true,
+  "default": "light"
+},
   "favicon": "/favicon.svg",
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "User Guide",
         "groups": [
           {
             "group": "Get Started",
             "pages": [
               "introduction",
-              "quickstart",
-              "development"
-            ]
-          },
-          {
-            "group": "Essentials",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/settings",
-              "essentials/navigation",
-              "essentials/reusable-snippets"
+              {
+                "group": "Quickstart",
+                "pages": [
+                  "quickstart/client"
+                ]
+              },
+              "examples",
+              "faqs"
             ]
           }
         ]
       },
       {
-        "tab": "API Reference",
+        "tab": "SDKs",
+        "icon": "book-open",
         "groups": [
           {
-            "group": "API Documentation",
+            "group": "Java",
             "pages": [
-              "api-reference/introduction"
+              "sdk/java/trunk-overview",
+              "sdk/java/trunk-client",
+              "sdk/java/trunk-server"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Specification",
+        "icon": "book",
+        "groups": [
+          {
+            "group": "2025-03-26 (Latest)",
+            "pages": [
+              "specification/2025-03-26/index",
+              "specification/2025-03-26/changelog",
+              "specification/2025-03-26/architecture/index",
+              {
+                "group": "Base Protocol",
+                "pages": [
+                  "specification/2025-03-26/basic/index",
+                  "specification/2025-03-26/basic/lifecycle",
+                  "specification/2025-03-26/basic/transports",
+                  "specification/2025-03-26/basic/authorization",
+                  {
+                    "group": "Utilities",
+                    "pages": [
+                      "specification/2025-03-26/basic/utilities/cancellation",
+                      "specification/2025-03-26/basic/utilities/ping",
+                      "specification/2025-03-26/basic/utilities/progress"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "Client Features",
+                "pages": [
+                  "specification/2025-03-26/client/roots",
+                  "specification/2025-03-26/client/sampling"
+                ]
+              },
+              {
+                "group": "Server Features",
+                "pages": [
+                  "specification/2025-03-26/server/index",
+                  "specification/2025-03-26/server/prompts",
+                  "specification/2025-03-26/server/resources",
+                  "specification/2025-03-26/server/tools",
+                  {
+                    "group": "Utilities",
+                    "pages": [
+                      "specification/2025-03-26/server/utilities/completion",
+                      "specification/2025-03-26/server/utilities/logging",
+                      "specification/2025-03-26/server/utilities/pagination"
+                    ]
+                  }
+                ]
+              }
             ]
           },
           {
-            "group": "Endpoint Examples",
+            "group": "2024-11-05",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "specification/2024-11-05/index",
+              "specification/2024-11-05/architecture/index",
+              {
+                "group": "Base Protocol",
+                "pages": [
+                  "specification/2024-11-05/basic/index",
+                  "specification/2024-11-05/basic/lifecycle",
+                  "specification/2024-11-05/basic/messages",
+                  "specification/2024-11-05/basic/transports",
+                  {
+                    "group": "Utilities",
+                    "pages": [
+                      "specification/2024-11-05/basic/utilities/cancellation",
+                      "specification/2024-11-05/basic/utilities/ping",
+                      "specification/2024-11-05/basic/utilities/progress"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "Client Features",
+                "pages": [
+                  "specification/2024-11-05/client/roots",
+                  "specification/2024-11-05/client/sampling"
+                ]
+              },
+              {
+                "group": "Server Features",
+                "pages": [
+                  "specification/2024-11-05/server/index",
+                  "specification/2024-11-05/server/prompts",
+                  "specification/2024-11-05/server/resources",
+                  "specification/2024-11-05/server/tools",
+                  {
+                    "group": "Utilities",
+                    "pages": [
+                      "specification/2024-11-05/server/utilities/completion",
+                      "specification/2024-11-05/server/utilities/logging",
+                      "specification/2024-11-05/server/utilities/pagination"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "group": "draft",
+            "pages": [
+              "specification/draft/index",
+              "specification/draft/changelog",
+              "specification/draft/architecture/index",
+              {
+                "group": "Base Protocol",
+                "pages": [
+                  "specification/draft/basic/index",
+                  "specification/draft/basic/lifecycle",
+                  "specification/draft/basic/transports",
+                  "specification/draft/basic/authorization",
+                  {
+                    "group": "Utilities",
+                    "pages": [
+                      "specification/draft/basic/utilities/cancellation",
+                      "specification/draft/basic/utilities/ping",
+                      "specification/draft/basic/utilities/progress"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "Client Features",
+                "pages": [
+                  "specification/draft/client/roots",
+                  "specification/draft/client/sampling"
+                ]
+              },
+              {
+                "group": "Server Features",
+                "pages": [
+                  "specification/draft/server/index",
+                  "specification/draft/server/prompts",
+                  "specification/draft/server/resources",
+                  "specification/draft/server/tools",
+                  {
+                    "group": "Utilities",
+                    "pages": [
+                      "specification/draft/server/utilities/completion",
+                      "specification/draft/server/utilities/logging",
+                      "specification/draft/server/utilities/pagination"
+                    ]
+                  }
+                ]
+              }
             ]
           }
         ]
@@ -58,19 +203,19 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
+          "anchor": "X",
+          "href": "https://github.com/trunk-protocol/python-sdk",
+          "icon": "X"
         },
         {
-          "anchor": "Community",
-          "href": "https://mintlify.com/community",
-          "icon": "slack"
+          "anchor": "Web",
+          "href": "https://usetrunk.ai",
+          "icon": "globe"
         },
         {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
+          "anchor": "Github",
+          "href": "https://github.com/trunk/",
+          "icon": "github"
         }
       ]
     }
@@ -80,23 +225,34 @@
     "dark": "/logo/dark.svg"
   },
   "navbar": {
-    "links": [
-      {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
-      }
-    ],
+    "links": [],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "GitHub",
+      "href": "https://github.com/trunk"
     }
+  },
+  "seo": {
+    "metatags": {
+      "og:image": "https://raw.githubusercontent.com/trunk/docs/2eb6171ddbfeefde349dc3b8d5e2b87414c26250/images/og-image.png"
+    },
+    "indexing": "navigable"
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "github": "https://github.com/trunk"
     }
+  },
+  "redirects": [
+    {
+      "source": "/whitepaper",
+      "destination": "/quickstart/client"
+    }
+  ],
+  "contextual": {
+    "options": [
+      "copy",
+      "view"
+    ]
   }
 }
