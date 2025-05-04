@@ -1,0 +1,36 @@
+---
+title: "What Changes With Trunk"
+description: "Compare traditional MCP workflows to Trunk-powered ones."
+---
+
+## A Side-by-Side Look
+
+| Traditional MCP Workflow                                      | With Trunk                                             |
+|---------------------------------------------------------------|--------------------------------------------------------|
+| Dozens of plug-ins with individual schemas, auth, versions    | One standard envelope, no manual imports              |
+| Duplicate API hits across competing agents                   | Shared batched answers for everyone                   |
+| Custom glue code per tool                                    | Unified context object; agents speak one dialect      |
+| Network round-trips per tool → latency spikes                | Sub-second aggregates; efficient execution            |
+| No clear provenance or audit trail                           | On-chain commitments + Merkle proofs                  |
+
+## Agent Simplicity, System Integrity
+
+Trunk isn't just more efficient - it's **composable, auditable, and agent-friendly** by design. No more reinventing the wheel every time your agent learns a new skill.
+
+<CardGroup cols={2}>
+  <Card
+    title="How Batching Works"
+    icon="layer-group"
+    href="/docs/concepts/batching"
+  >
+    Learn how Trunk batches MCP requests across agents.
+  </Card>
+  <Card
+    title="Consensus and Trust"
+    icon="scale-balanced"
+    href="/docs/concepts/consensus"
+  >
+    See how data quality and source reputation are enforced.
+  </Card>
+</CardGroup>
+

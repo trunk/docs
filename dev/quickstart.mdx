@@ -1,0 +1,74 @@
+---
+title: 'Quick Start Guide'
+description: 'Get started with Trunk in minutes'
+---
+
+# Quick Start Guide
+
+Welcome to Trunk! This guide will help you get up and running quickly with the Trunk network.
+
+## Overview
+
+Trunk is a decentralized network that enables secure and efficient data validation. This guide will help you:
+- Set up your development environment
+- Connect to the Trunk network
+- Run your first validation
+
+## Installation
+
+1. Install the Trunk CLI:
+```bash
+npm install -g @trunk/cli
+```
+
+2. Initialize your project:
+```bash
+trunk init my-project
+cd my-project
+```
+
+3. Install dependencies:
+```bash
+npm install
+```
+
+## Basic Usage
+
+### 1. Configure Your Environment
+
+Create a `.env` file:
+```env
+TRUNK_NODE=testnet
+TRUNK_API_KEY=your-api-key
+```
+
+### 2. Create Your First Validator
+
+```javascript
+import { TrunkValidator } from '@trunk/core';
+
+const validator = new TrunkValidator({
+  name: 'my-validator',
+  port: 8545
+});
+
+await validator.start();
+```
+
+### 3. Run the Example
+
+```bash
+npm run example
+```
+
+## Next Steps
+
+- [Set up a Validator Node](/dev/validator)
+- [Connect to the Network](/dev/connect)
+- [Contribute to Trunk](/dev/contribute)
+
+## Need Help?
+
+- Check our [GitHub repository](https://github.com/trunk)
+- Join our [Discord community](https://discord.gg/trunk)
+- Visit the [Explorer](https://explorer.trunk.com)

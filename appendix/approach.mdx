@@ -1,0 +1,51 @@
+---
+title: "The Trunk Approach"
+description: "How Trunk restructures MCP execution paths for public and private data."
+---
+
+## One Protocol. Two Execution Paths. Zero Manual Wiring.
+
+Trunk eliminates dependency sprawl by introducing a unified protocol with distinct paths for different types of requests:
+
+### Request Type Matrix
+
+| Request Type               | Where Trunk Executes   | Why                                |
+|----------------------------|------------------------|-------------------------------------|
+| Public data (prices, news) | On-chain batching layer| Shared cache, tamper-proof history  |
+| Private actions (calendar, reminders) | Local Trunk runtime | Privacy, instant feedback         |
+
+---
+
+## 2.1 On-chain Public Requests
+
+1. Agent emits a plain, tool-agnostic MCP call (e.g. `get_price("SOL")`).
+2. Trunk batches thousands of such calls per block.
+3. A lightweight consensus network (inspired by Bittensor) resolves the values, posts the result, and returns proofs.
+4. All agents can reuse the answer — no duplicate fetches, no extra cost.
+
+---
+
+## 2.2 Client-side Personal Requests
+
+1. Agent issues a private intent (e.g. `add_event("Dentist", "Tuesday 3pm")`).
+2. Trunk batches it with other user intents locally.
+3. Execution happens on-device; state never leaves the user’s domain.
+4. A hashed commitment is recorded on-chain for auditability — but the plaintext stays private.
+
+<CardGroup cols={2}>
+  <Card
+    title="Architecture Deep Dive"
+    icon="sitemap"
+    href="/docs/architecture"
+  >
+    Understand how public and private request routing works under the hood.
+  </Card>
+  <Card
+    title="Build with the SDK"
+    icon="cubes"
+    href="https://github.com/trunk/trunk"
+  >
+    Start integrating Trunk into your agents.
+  </Card>
+</CardGroup>
+

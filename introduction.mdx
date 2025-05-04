@@ -1,71 +1,82 @@
 ---
-title: Introduction
-description: "Welcome to the home of your new documentation"
+title: "Why Trunk Exists"
+description: "Understand the motivation behind Trunk and the problem it solves."
 ---
 
-<img
-  className="block dark:hidden"
-  src="/images/hero-light.png"
-  alt="Hero Light"
-/>
-<img
-  className="hidden dark:block"
-  src="/images/hero-dark.png"
-  alt="Hero Dark"
-/>
+## The Problem with Traditional MCPs
 
-## Setting up
+Today's model-context protocols (MCPs) are noisy and fragmented. Each new capability, like fetching a token price, adding a calendar event, or summarizing a news feed,requires manually locating a plug-in, importing its schema, wiring credentials, and handling everything from rate limits to response formats.
 
-The first step to world-class documentation is setting up your editing environments.
+> Agents end up dragging a backpack of bespoke dependencies just to answer a single follow-up question.
+
+### Example: A Simple Query
+_“What’s the current price of SOL and how does it compare to yesterday?”_
+
+Becomes four manual chores:
+
+| Step                     | Pain Point                              |
+|--------------------------|------------------------------------------|
+| Install price API tool   | Version clashes, API changes            |
+| Configure API keys       | Secret management, rotation             |
+| Parse response/timestamps| Glue code, edge cases                   |
+| Rate-limit & cache       | Extra infra, stale data risk            |
+
+**Result:** More scaffolding than intelligence.
 
 <CardGroup cols={2}>
   <Card
-    title="Edit Your Docs"
-    icon="pen-to-square"
-    href="https://mintlify.com/docs/quickstart"
+    title="Get Started"
+    icon="rocket"
+    href="/quickstart"
   >
-    Get your docs set up locally for easy development
+    Deploy a Trunk runtime and see the difference.
   </Card>
   <Card
-    title="Preview Changes"
-    icon="image"
-    href="https://mintlify.com/docs/development"
+    title="Explore Concepts"
+    icon="book"
+    href="/docs/concepts"
   >
-    Preview your changes before you push to make sure they're perfect
+    Learn the core ideas behind Trunk’s design.
   </Card>
 </CardGroup>
 
-## Make it yours
 
-Update your docs to your brand and add valuable content for the best user conversion.
+
+## Runtime Architecture
+
+```mermaid
+flowchart TD
+    Agent["Agent"] --> SDK["Trunk SDK"]
+    SDK --> Router["Trunk Router"]
+    Router -->|public data| Chain["On-chain log"]
+    Router -->|private intents 🔒| Local["Local Intent Runner"]
+    Router --> Manager["• Batch Manager"]
+    Router --> Consensus["• Consensus Verifier"]
+```
+
+## Execution Flow
+
+Agents embed a tiny SDK (~x kB). Each MCP call is automatically routed:
+
+- Public data → sent to Trunk's batch manager and published on-chain.
+- Private intents → executed locally and committed as hashed records.
+
+No extra imports. One async response.
 
 <CardGroup cols={2}>
   <Card
-    title="Customize Style"
-    icon="palette"
-    href="https://mintlify.com/docs/settings/global"
-  >
-    Customize your docs to your company's colors and brands
-  </Card>
-  <Card
-    title="Reference APIs"
+    title="Explore the SDK"
     icon="code"
-    href="https://mintlify.com/docs/api-playground/openapi"
+    href="/trunk/trunk"
   >
-    Automatically generate endpoints from an OpenAPI spec
+    Learn how to install and invoke Trunk in your codebase.
   </Card>
   <Card
-    title="Add Components"
-    icon="screwdriver-wrench"
-    href="https://mintlify.com/docs/content/components/accordions"
+    title="Run a Local Runtime"
+    icon="server"
+    href="/dev/quickstart"
   >
-    Build interactive features and designs to guide your users
-  </Card>
-  <Card
-    title="Get Inspiration"
-    icon="stars"
-    href="https://mintlify.com/customers"
-  >
-    Check out our showcase of our favorite documentation
+    Deploy a client-side instance for handling private actions.
   </Card>
 </CardGroup>
+

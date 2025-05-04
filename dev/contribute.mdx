@@ -1,0 +1,153 @@
+---
+title: 'Contributing to Trunk'
+description: 'Learn how to contribute to the Trunk project'
+---
+
+# Contributing to Trunk
+
+Thank you for your interest in contributing to Trunk! This guide will help you get started with contributing to our open-source project.
+
+## Getting Started
+
+### 1. Fork and Clone
+
+First, fork the Trunk repository and clone it locally:
+
+```bash
+git clone https://github.com/YOUR_USERNAME/trunk.git
+cd trunk
+git remote add upstream https://github.com/trunk/trunk.git
+```
+
+### 2. Set Up Development Environment
+
+```bash
+# Install dependencies
+npm install
+
+# Run tests to ensure everything is working
+npm test
+```
+
+## Development Workflow
+
+### 1. Create a Branch
+
+```bash
+git checkout -b feature/your-feature-name
+```
+
+### 2. Development Guidelines
+
+- Write clean, documented code
+- Follow our coding style
+- Add tests for new features
+- Update documentation as needed
+
+### 3. Testing
+
+Run the test suite:
+```bash
+# Run all tests
+npm test
+
+# Run specific test suite
+npm test -- --grep "Feature Name"
+
+# Run with coverage
+npm run test:coverage
+```
+
+## Pull Request Process
+
+1. **Update your fork**
+```bash
+git fetch upstream
+git rebase upstream/main
+```
+
+2. **Commit your changes**
+```bash
+git add .
+git commit -m "feat: add new feature"
+```
+
+3. **Push and create PR**
+```bash
+git push origin feature/your-feature-name
+```
+
+Then create a Pull Request through GitHub.
+
+## Code Style
+
+We follow these conventions:
+
+### JavaScript/TypeScript
+```javascript
+// Use consistent naming
+const ValidatorNode = class {
+  constructor(config) {
+    this.config = config;
+  }
+
+  async start() {
+    // Implementation
+  }
+};
+
+// Use meaningful variable names
+const validatorConfig = {
+  port: 8545,
+  network: 'testnet'
+};
+```
+
+### Documentation
+- Use clear, concise language
+- Include code examples
+- Document all public APIs
+- Keep examples up to date
+
+## Issue Guidelines
+
+When creating issues:
+
+1. **Bug Reports**
+   - Describe the bug
+   - Include steps to reproduce
+   - Add system information
+   - Attach relevant logs
+
+2. **Feature Requests**
+   - Explain the feature
+   - Describe use cases
+   - Suggest implementation
+
+## Community
+
+- Join our [Discord](https://discord.gg/trunk)
+- Follow us on [Twitter](https://twitter.com/trunkprotocol)
+- Participate in community calls
+
+## Code of Conduct
+
+We follow a strict code of conduct:
+
+- Be respectful and inclusive
+- No harassment or discrimination
+- Constructive feedback only
+- Follow project guidelines
+
+## Recognition
+
+Contributors are recognized through:
+- Credits in release notes
+- Community spotlights
+- Contributor badges
+
+## Need Help?
+
+- Check our [Documentation](https://docs.trunk.com)
+- Join our [Discord](https://discord.gg/trunk)
+- Email: contribute@trunk.com

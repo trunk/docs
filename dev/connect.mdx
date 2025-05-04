@@ -1,0 +1,113 @@
+---
+title: 'Connecting to the Network'
+description: 'Learn how to connect to the Trunk network'
+---
+
+# Connecting to the Network
+
+This guide explains how to connect your application or validator to the Trunk network.
+
+## Network Overview
+
+The Trunk network consists of multiple nodes working together to validate and process data. There are two main networks:
+- **Mainnet**: The production network
+- **Testnet**: For development and testing
+
+## Connection Methods
+
+### 1. HTTP API
+
+Connect via our REST API:
+
+```javascript
+import { TrunkClient } from '@trunk/client';
+
+const client = new TrunkClient({
+  endpoint: 'https://api.trunk.network',
+  apiKey: 'your-api-key'
+});
+
+// Make a request
+const response = await client.connect();
+```
+
+### 2. WebSocket Connection
+
+For real-time updates:
+
+```javascript
+import { TrunkWebSocket } from '@trunk/client';
+
+const ws = new TrunkWebSocket({
+  endpoint: 'wss://ws.trunk.network',
+  apiKey: 'your-api-key'
+});
+
+ws.on('message', (data) => {
+  console.log('Received:', data);
+});
+```
+
+## Authentication
+
+1. Get your API key from the [Trunk Dashboard](https://dashboard.trunk.com)
+2. Add it to your environment:
+```env
+TRUNK_API_KEY=your-api-key
+```
+
+## Network Configuration
+
+Configure your connection in `trunk.config.js`:
+
+```javascript
+module.exports = {
+  network: {
+    environment: 'testnet', // or 'mainnet'
+    timeout: 5000,
+    retries: 3
+  },
+  security: {
+    encryption: true,
+    verifyPeers: true
+  }
+};
+```
+
+## Best Practices
+
+1. **Error Handling**
+```javascript
+try {
+  await client.connect();
+} catch (error) {
+  console.error('Connection failed:', error);
+}
+```
+
+2. **Keep-Alive**
+```javascript
+client.on('disconnect', async () => {
+  await client.reconnect();
+});
+```
+
+## Troubleshooting
+
+Common connection issues:
+
+### Network Timeouts
+- Check your internet connection
+- Verify API key is valid
+- Ensure endpoints are correct
+
+### Authentication Errors
+- Regenerate API key
+- Check key permissions
+- Verify network environment
+
+## Next Steps
+
+- [Set up a Validator](/dev/validator)
+- [View Network Status](https://explorer.trunk.com)
+- [API Reference](/api-reference)

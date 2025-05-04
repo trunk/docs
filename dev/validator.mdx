@@ -1,0 +1,116 @@
+---
+title: 'Setting up a Validator'
+description: 'Learn how to set up and run a Trunk validator node'
+---
+
+# Setting up a Validator Node
+
+This guide will walk you through the process of setting up and running a Trunk validator node. Validators play a crucial role in the Trunk network by verifying and processing transactions.
+
+## Prerequisites
+
+Before you begin, ensure you have the following installed:
+- [Node.js](https://nodejs.org/) (v18 or higher)
+- [npm](https://www.npmjs.com/) (v9 or higher)
+- [Git](https://git-scm.com/)
+
+## Quick Start
+
+Follow these steps to get your validator node up and running:
+
+1. Clone the Trunk Network repository:
+```bash
+git clone https://github.com/trunk/network.git
+cd network
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Configure your validator:
+```bash
+cp .env.example .env
+```
+
+Edit the `.env` file and set your validator configuration:
+```env
+VALIDATOR_NAME=my-validator
+VALIDATOR_PORT=8545
+NETWORK_ENV=testnet
+```
+
+4. Start the validator:
+```bash
+npm run validator:serve
+```
+
+Your validator should now be running and connecting to the Trunk network.
+
+## Configuration Options
+
+The following configuration options are available in the `.env` file:
+
+| Option | Description | Default |
+|--------|-------------|---------|
+| `VALIDATOR_NAME` | Unique name for your validator | `validator` |
+| `VALIDATOR_PORT` | Port to run the validator on | `8545` |
+| `NETWORK_ENV` | Network environment (mainnet/testnet) | `testnet` |
+| `LOG_LEVEL` | Logging verbosity | `info` |
+
+## Monitoring
+
+Once your validator is running, you can monitor its status:
+
+1. View validator logs:
+```bash
+npm run validator:logs
+```
+
+2. Check validator status:
+```bash
+npm run validator:status
+```
+
+3. View network metrics at `http://localhost:8545/metrics`
+
+## Best Practices
+
+- Regularly update your validator software
+- Monitor system resources
+- Use secure credentials
+- Maintain good network connectivity
+- Back up your validator configuration
+
+## Troubleshooting
+
+Common issues and solutions:
+
+### Validator Won't Start
+- Check if the port is already in use
+- Verify Node.js version
+- Ensure all dependencies are installed
+
+### Network Connection Issues
+- Check your firewall settings
+- Verify network configuration
+- Ensure your node can reach other network peers
+
+### Performance Issues
+- Monitor system resources
+- Check log files for errors
+- Verify hardware meets minimum requirements
+
+## Next Steps
+
+- [Connect to the Network](/dev/connect)
+- [Contribute to Development](/dev/contribute)
+- [Network Architecture](/concepts/network)
+
+## Support
+
+If you need help with your validator setup:
+- Join our [Discord](https://discord.gg/trunk)
+- Visit our [GitHub](https://github.com/trunk/network)
+- Check the [Explorer](https://explorer.trunk.com)

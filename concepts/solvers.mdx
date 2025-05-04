@@ -1,0 +1,169 @@
+---
+title: 'Solvers'
+description: 'Understanding Trunk Network Solvers'
+---
+
+# Solvers
+
+Solvers are specialized nodes in the Trunk network that handle complex computation and validation tasks.
+
+## What are Solvers?
+
+Solvers are network participants that:
+- Process complex transactions
+- Validate computation results
+- Ensure network efficiency
+- Maintain data consistency
+
+## Solver Types
+
+### 1. Validation Solvers
+
+```typescript
+interface ValidationSolver {
+  type: 'validation';
+  capabilities: string[];
+  stake: number;
+  performance: {
+    successRate: number;
+    latency: number;
+  };
+}
+```
+
+These solvers focus on transaction validation:
+- Verify transaction integrity
+- Check signature validity
+- Ensure state consistency
+
+### 2. Computation Solvers
+
+```typescript
+interface ComputationSolver {
+  type: 'computation';
+  resources: {
+    cpu: number;
+    memory: number;
+    storage: number;
+  };
+  specialization: string[];
+}
+```
+
+Handle complex computational tasks:
+- Mathematical operations
+- Data processing
+- Resource-intensive calculations
+
+## Solver Selection
+
+The network selects solvers based on:
+
+1. **Stake Amount**
+   - Higher stake = More opportunities
+   - Minimum stake requirements
+   - Stake slashing for misbehavior
+
+2. **Performance Metrics**
+   - Response time
+   - Success rate
+   - Resource availability
+
+3. **Specialization**
+   - Task type matching
+   - Resource requirements
+   - Geographic location
+
+## Implementation
+
+### Basic Solver Setup
+
+```javascript
+import { TrunkSolver } from '@trunk/core';
+
+class CustomSolver extends TrunkSolver {
+  async validate(transaction) {
+    // Validation logic
+    const isValid = await this.checkTransaction(transaction);
+    return {
+      valid: isValid,
+      reason: isValid ? 'valid' : 'invalid signature'
+    };
+  }
+
+  async compute(task) {
+    // Computation logic
+    const result = await this.processTask(task);
+    return {
+      result,
+      proof: this.generateProof(result)
+    };
+  }
+}
+```
+
+### Solver Configuration
+
+```javascript
+const solverConfig = {
+  type: 'validation',
+  stake: 1000,
+  capabilities: ['tx-validation', 'proof-generation'],
+  resources: {
+    maxTasks: 100,
+    maxMemory: '4GB'
+  }
+};
+```
+
+## Rewards and Penalties
+
+### Reward Structure
+
+| Activity | Reward |
+|----------|--------|
+| Validation | 0.1 TOKEN |
+| Computation | 0.5 TOKEN |
+| Consensus | 0.2 TOKEN |
+
+### Penalty Conditions
+
+- Invalid results
+- Slow response
+- Offline status
+- Malicious behavior
+
+## Best Practices
+
+1. **Resource Management**
+```javascript
+class ResourceManager {
+  monitor() {
+    // Check CPU usage
+    // Monitor memory
+    // Track network I/O
+  }
+
+  optimize() {
+    // Balance load
+    // Clear cache
+    // Adjust parameters
+  }
+}
+```
+
+2. **Error Handling**
+```javascript
+try {
+  await solver.process(task);
+} catch (error) {
+  await solver.reportError(error);
+  await solver.recover();
+}
+```
+
+## Next Steps
+
+- [Network Architecture](/concepts/network)
+- [Routing System](/concepts/routing)
+- [Privacy Features](/concepts/privacy)
