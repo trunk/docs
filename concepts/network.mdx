@@ -5,114 +5,100 @@ description: 'Understanding the Trunk Network Architecture'
 
 # Network Architecture
 
-The Trunk network is designed as a distributed system for secure and efficient data validation. This document explains the core architectural concepts.
 
-## Network Overview
+The Trunk network operates through the **Trunk Local MCP Client**, a lightweight client that users install on their own devices.
 
-```mermaid
-graph TD
-    A[Client] --> B[Load Balancer]
-    B --> C[Validator Node 1]
-    B --> D[Validator Node 2]
-    B --> E[Validator Node 3]
-    C --> F[Storage Layer]
-    D --> F
-    E --> F
-```
+This client is responsible for:
 
-## Core Components
+- Managing **seed phrases**
+- Handling **environment variables**
+- Storing **local content** securely
 
-### 1. Validator Nodes
+---
 
-Validator nodes are the backbone of the Trunk network:
+## How It Works
+<img className="block dark:hidden" src="/images/light/client-solver.png" />
+<img className="hidden dark:block" src="/images/dark/client-solver.png" />
 
-- **Purpose**: Validate and process transactions
-- **Consensus**: Proof of Stake mechanism
-- **Selection**: Dynamic node selection based on stake and performance
 
-### 2. Network Protocol
+When a user performs an action, the Local MCP Client:
 
-The network uses a custom protocol for communication:
+1. Reaches out to the Trunk network
+2. Discovers available **solvers**
+3. Sends a request for computation or data handling
 
-```javascript
-interface NetworkMessage {
-  type: 'transaction' | 'validation' | 'consensus';
-  payload: {
-    data: any;
-    signature: string;
-    timestamp: number;
-  };
-}
-```
+---
 
-### 3. Security Layer
+## Current Phase: Testnet
 
-Multiple security measures ensure network integrity:
+- Solvers are currently **private** and used only for **internal testing**
+- **MCP requests are free** during the testnet phase
+- Over time, the platform will open up to **allow anyone to run a solver node**
 
-- End-to-end encryption
-- Multi-signature validation
-- Byzantine fault tolerance
-- Secure key management
+---
 
-## Network Topology
+## Future: Token-Powered Requests
 
-The network is organized in layers:
+- Once the network matures, **MCP requests will require payment in Trunk tokens**
+- This introduces incentives for solver node operators and validators
 
-1. **Edge Layer**
-   - Client connections
-   - Load balancing
-   - DDoS protection
+---
 
-2. **Validation Layer**
-   - Transaction processing
-   - Consensus mechanism
-   - State management
+## Post-Testnet Consensus: Competing Solvers
 
-3. **Storage Layer**
-   - Distributed storage
-   - Data replication
-   - Backup systems
+Once Trunk exits the testnet phase, the network will shift toward an open, competitive solver model—where multiple independent solvers can respond to MCP requests.
 
-## Consensus Mechanism
+Here’s how the consensus mechanism will work in this phase:
 
-Our consensus mechanism ensures:
+---
 
-1. **Agreement**
-   - All valid nodes agree on state
-   - Byzantine fault tolerant
-   - Fast finality
+### Multiple Solvers, One Task
 
-2. **Validation**
-   - Multi-step verification
-   - Stake-weighted voting
-   - Automatic dispute resolution
+When a user submits a request:
 
-## Performance
+1. The network **broadcasts the task** to eligible solvers.
+2. Each solver independently attempts to **process the request and return a result**.
+3. Responses are collected and compared by **validator nodes**.
 
-Network performance metrics:
+---
 
-| Metric       | Target        |
-|-------------|---------------|
-| Latency     | &lt; 100ms    |
-| Throughput  | 10k tps       |
-| Finality    | 2 seconds     |
-| Availability| 99.99%        |
+### Competitive Execution
 
-## Network States
+Solvers will compete based on:
 
-The network can be in various states:
+- **Accuracy**: Only correct results are considered.
+- **Performance**: Faster responses are favored.
+- **Reputation**: Long-term reliability improves solver ranking.
+- **Stake**: Higher-staked solvers get more visibility, but not guaranteed selection.
 
-```typescript
-enum NetworkState {
-  NORMAL,      // Regular operation
-  CONGESTED,   // High load
-  UPGRADING,   // Protocol upgrade
-  RECOVERY     // Post-incident
-}
-```
+---
+
+### Result Validation & Finality
+
+Validator nodes play a critical role in establishing consensus:
+
+- They **cross-check solver responses** for consistency and correctness.
+- If results match across solvers, one is selected and rewarded.
+- If there's disagreement, validators perform **multi-step verification** or trigger **dispute resolution**.
+- Final output is committed once validators reach consensus, ensuring fast but fault-tolerant finality.
+
+---
+
+### Incentive Alignment
+
+- The **first correct solver** to return a validated result earns the majority of the reward.
+- Other solvers with matching results may receive partial rewards.
+- Incorrect or malicious responses result in **slashed stakes** and reduced reputation.
+
+---
+
+This model ensures that the network remains **decentralized, competitive, and reliable**, even as it scales to accommodate more developers and workloads.
 
 ## Next Steps
 
-- [Learn about Solvers](/concepts/solvers)
-- [Understand Routing](/concepts/routing)
+- [Learn about Solvers](/concepts/solvers)  
+- [Understand Routing](/concepts/routing)  
 - [Explore Privacy](/concepts/privacy)
+
+
+

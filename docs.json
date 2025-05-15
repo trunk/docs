@@ -9,8 +9,7 @@
   },
   "favicon": "/favicon.svg",
   "appearance": {
-    "default": "light",
-    "strict": true
+    "default": "system"
   },
   "navigation": {
     "tabs": [
@@ -46,16 +45,15 @@
             "pages": [
               "appendix/approach",
               "appendix/properties",
-              "appendix/changes"
+              "appendix/changes",
+              "appendix/glossary"
             ]
           }
         ]
       }
     ],
     "global": {
-
       "anchors": [
-
         {
           "anchor": "Github",
           "href": "https://github.com/trunk",

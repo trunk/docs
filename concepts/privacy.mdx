@@ -5,211 +5,49 @@ description: 'Understanding Privacy in the Trunk Network'
 
 # Privacy Features
 
-The Trunk network implements robust privacy features to protect user data and network operations.
+The Trunk network is committed to protecting user privacy at every stage. At present, all private data is managed and processed locally by the Trunk Local MCP Client, ensuring that sensitive information never leaves the user's device without protection. Looking ahead, Trunk will process private transactions inside Trusted Execution Environments hosted on the Aethir Cloud. This transition will enable secure sharing of private data, supported by TEE attestations and zero-knowledge proofs, while maintaining strong privacy guarantees for every user.
 
-## Privacy Overview
 
-```mermaid
-graph TD
-    A[User Data] --> B[Encryption Layer]
-    B --> C[Privacy Protocol]
-    C --> D[Zero Knowledge Proofs]
-    C --> E[Secure Enclaves]
-    C --> F[Data Sharding]
-```
+## Privacy by Design
 
-## Core Privacy Features
+Currently:
+- **All private data stays local** on the user's device
 
-### 1. End-to-End Encryption
+Coming soon:
+- Trunk will transition to processing private transactions inside **Trusted Execution Environments (TEEs)** hosted on **Aethir Cloud**
+- This model ensures:
+  - **Secure off-device computation**
+  - **TEE attestations**
+  - **Zero-knowledge proof** support for privacy validation
 
-All network communications are encrypted:
 
-```typescript
-interface EncryptedMessage {
-  payload: string;      // Encrypted data
-  iv: string;          // Initialization vector
-  ephemeralKey: string; // One-time key
-  signature: string;    // Message signature
-}
-```
+### Security
+<img className="block dark:hidden" src="/images/light/encryption.png" />
+<img className="hidden dark:block" src="/images/dark/encryption.png" />
 
-### 2. Zero Knowledge Proofs
 
-Validate transactions without revealing data:
+### TEE's
 
-```javascript
-class ZKProof {
-  async generateProof(data, statement) {
-    // Generate zero knowledge proof
-    return {
-      proof: bytes,
-      publicInputs: array,
-      verification: function
-    };
-  }
-}
-```
+#### What Are Trusted Execution Environments (TEEs)?
 
-## Privacy Protocols
+**Trusted Execution Environments (TEEs)** are secure, isolated regions within a device’s processor designed to run code and handle data confidentially. Even if the main operating system or other apps are compromised, the code and data inside a TEE remain protected.
 
-### 1. Data Anonymization
+TEEs enforce strict security boundaries:
 
-```javascript
-class DataAnonymizer {
-  static anonymize(data) {
-    return {
-      hash: this.hashData(data),
-      merkleProof: this.generateMerkleProof(data),
-      timestamp: Date.now()
-    };
-  }
-}
-```
+- Only authorized code can run within the environment
+- Data stored and processed inside is encrypted and inaccessible to the outside world
+- Integrity is verified through cryptographic **attestation**, proving that the environment hasn’t been tampered with
 
-### 2. Secure Enclaves
+In the Trunk network, TEEs hosted on the **Aethir Cloud** are used to process sensitive transactions off-device while preserving user privacy. This allows private data to be securely shared and computed, with strong guarantees backed by both **TEE attestations** and **zero-knowledge proofs**.
 
-Protected execution environments:
 
-```javascript
-class SecureEnclave {
-  constructor() {
-    this.state = 'sealed';
-    this.attestation = null;
-  }
 
-  async process(data) {
-    // Process data in secure environment
-    return {
-      result: processedData,
-      proof: attestation
-    };
-  }
-}
-```
 
-## Privacy Levels
+<img className="block dark:hidden" src="/images/light/tee.png" />
+<img className="hidden dark:block" src="/images/dark/tee.png" />
 
-The network supports multiple privacy levels:
 
-| Level | Description | Use Case |
-|-------|-------------|----------|
-| Public | Basic encryption | General transactions |
-| Private | Full privacy | Sensitive data |
-| Custom | Configurable | Specific needs |
 
-## Implementation
-
-### 1. Basic Privacy Setup
-
-```javascript
-import { TrunkPrivacy } from '@trunk/privacy';
-
-const privacy = new TrunkPrivacy({
-  mode: 'strict',
-  features: ['zk-proofs', 'encryption', 'anonymization']
-});
-
-// Configure privacy settings
-privacy.configure({
-  encryption: {
-    algorithm: 'AES-256-GCM',
-    keyRotation: '24h'
-  },
-  anonymization: {
-    level: 'maximum',
-    preserveFields: ['timestamp']
-  }
-});
-```
-
-### 2. Privacy Middleware
-
-```javascript
-const privacyMiddleware = {
-  incoming: async (data) => {
-    // Decrypt and verify
-    return await privacy.processIncoming(data);
-  },
-  outgoing: async (data) => {
-    // Encrypt and sign
-    return await privacy.processOutgoing(data);
-  }
-};
-```
-
-## Security Measures
-
-### 1. Key Management
-
-```javascript
-class KeyManager {
-  async rotateKeys() {
-    const newKeys = await this.generateKeyPair();
-    await this.distributeKeys(newKeys);
-    return {
-      status: 'rotated',
-      nextRotation: Date.now() + 86400000
-    };
-  }
-}
-```
-
-### 2. Audit Logging
-
-Secure, privacy-preserving logs:
-
-```javascript
-class AuditLog {
-  log(event) {
-    return {
-      hash: this.hashEvent(event),
-      timestamp: Date.now(),
-      proof: this.generateProof(event)
-    };
-  }
-}
-```
-
-## Best Practices
-
-1. **Data Handling**
-   - Minimize data collection
-   - Implement data expiry
-   - Use secure deletion
-
-2. **Network Security**
-   - Regular security audits
-   - Penetration testing
-   - Vulnerability scanning
-
-3. **Compliance**
-   - GDPR compliance
-   - Data sovereignty
-   - Regulatory reporting
-
-## Privacy Configuration
-
-Example configuration:
-
-```javascript
-const privacyConfig = {
-  encryption: {
-    algorithm: 'AES-256-GCM',
-    keyRotation: 86400, // 24 hours
-    backup: true
-  },
-  anonymization: {
-    mode: 'strict',
-    preserveFields: ['timestamp', 'type'],
-    saltRotation: 3600 // 1 hour
-  },
-  zkProofs: {
-    enabled: true,
-    protocol: 'groth16',
-    verification: 'immediate'
-  }
-};
-```
 
 ## Next Steps
 
