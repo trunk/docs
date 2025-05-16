@@ -1,74 +1,101 @@
 ---
 title: 'Quick Start Guide'
-description: 'Get started with Trunk in minutes'
+description: 'Integrate a custom MCP server using Trunk SDK'
 ---
 
 # Quick Start Guide
 
-Welcome to Trunk! This guide will help you get up and running quickly with the Trunk network.
+Welcome to Trunk! This guide walks you through integrating a custom MCP (Multi-Channel Protocol) server into Claude's desktop application using the Trunk SDK. 
 
-## Overview
-
-Trunk is a decentralized network that enables secure and efficient data validation. This guide will help you:
-- Set up your development environment
-- Connect to the Trunk network
-- Run your first validation
-
-## Installation
-
-1. Install the Trunk CLI:
-```bash
-npm install -g @trunk/cli
-```
-
-2. Initialize your project:
-```bash
-trunk init my-project
-cd my-project
-```
-
-3. Install dependencies:
-```bash
-npm install
-```
-
-## Basic Usage
-
-### 1. Configure Your Environment
-
-Create a `.env` file:
-```env
-TRUNK_NODE=testnet
-TRUNK_API_KEY=your-api-key
-```
-
-### 2. Create Your First Validator
-
-```javascript
-import { TrunkValidator } from '@trunk/core';
-
-const validator = new TrunkValidator({
-  name: 'my-validator',
-  port: 8545
-});
-
-await validator.start();
-```
-
-### 3. Run the Example
+You can find the Trunk SDK on npm at [https://www.npmjs.com/package/@trunkai/trunk-sdk](https://www.npmjs.com/package/@trunkai/trunk-sdk).
 
 ```bash
-npm run example
+npm install @trunkai/trunk-sdk
 ```
+
+## 🛠 Setup
+
+### 1. Make the Build Script Executable
+
+In the root of your project:
+
+```bash
+chmod +x build.sh
+```
+
+### 2. Run the Build Script
+
+```bash
+./build.sh
+```
+
+This compiles the project and prepares the MCP server entry point in the `dist/` directory.
+
+---
+
+## ⚙️ Configure Claude Desktop
+
+### 3. Open Claude Configuration
+
+Use your code editor to open the Claude desktop config file:
+
+```bash
+code ~/Library/Application\ Support/Claude/claude_desktop_config.json
+```
+
+### 4. Add Your MCP Server Entry
+
+Modify or add the `superagent` entry in the JSON config:
+
+```json
+"superagent": {
+  "command": "/usr/local/bin/node",
+  "args": ["/Users/your-username/path-to-project/dist/index.js"]
+}
+```
+
+> ✅ Make sure you're using the correct absolute path to the `index.js` file in your `dist/` folder.
+
+---
+
+## ✅ Requirements
+
+- Ensure you're using a **recent version of Node.js**
+- You can check the correct binary path with:
+  
+```bash
+which node
+```
+
+- Confirm your version with:
+  
+```bash
+node -v
+```
+
+---
+
+## 💡 Tips
+
+- Restart Claude Desktop after saving configuration changes
+- Check logs for integration issues or unexpected behavior
+- Ensure your build directory (`dist/`) contains the compiled MCP server
+
+---
+
+## 📁 Project Structure
+
+```
+.
+├── build.sh                # Build script
+├── dist/                   # Compiled MCP server files
+└── src/                    # Source code
+```
+
+---
 
 ## Next Steps
 
-- [Set up a Validator Node](/dev/validator)
-- [Connect to the Network](/dev/connect)
-- [Contribute to Trunk](/dev/contribute)
-
-## Need Help?
-
-- Check our [GitHub repository](https://github.com/trunk)
-- Join our [Discord community](https://discord.gg/trunk)
-- Visit the [Explorer](https://explorer.trunk.com)
+- [Explore the Trunk SDK on npm](https://www.npmjs.com/package/@trunkai/trunk-sdk)
+- [View the GitHub Repository](https://github.com/trunk/)
+- [Learn More About MCPs](/concepts/mcp)

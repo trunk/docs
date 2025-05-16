@@ -5,18 +5,27 @@ description: 'Learn how to set up and run a Trunk validator node'
 
 # Setting up a Validator Node
 
-This guide will walk you through the process of setting up and running a Trunk validator node. Validators play a crucial role in the Trunk network by verifying and processing transactions.
+Validators play a crucial role in the Trunk network by verifying and processing transactions. While the validator network is a core part of Trunk’s architecture, **validator setup is currently in closed beta**.
+
+If you're part of the closed beta program, follow the steps below to set up your node. Public access will be available soon—stay tuned for updates.
+
+## 🚧 Closed Beta Notice
+
+Validator nodes are currently limited to a small group of early testers. If you're interested in participating, [join the Discord](https://discord.gg/trunk) and request early access.
+
+---
 
 ## Prerequisites
 
-Before you begin, ensure you have the following installed:
+Ensure you have the following installed:
+
 - [Node.js](https://nodejs.org/) (v18 or higher)
 - [npm](https://www.npmjs.com/) (v9 or higher)
 - [Git](https://git-scm.com/)
 
-## Quick Start
+---
 
-Follow these steps to get your validator node up and running:
+## Quick Start (Beta Access Only)
 
 1. Clone the Trunk Network repository:
 ```bash
@@ -34,7 +43,8 @@ npm install
 cp .env.example .env
 ```
 
-Edit the `.env` file and set your validator configuration:
+Edit the `.env` file:
+
 ```env
 VALIDATOR_NAME=my-validator
 VALIDATOR_PORT=8545
@@ -46,11 +56,11 @@ NETWORK_ENV=testnet
 npm run validator:serve
 ```
 
-Your validator should now be running and connecting to the Trunk network.
+Your validator should now be running and connected to the testnet (if access has been granted).
+
+---
 
 ## Configuration Options
-
-The following configuration options are available in the `.env` file:
 
 | Option | Description | Default |
 |--------|-------------|---------|
@@ -59,9 +69,9 @@ The following configuration options are available in the `.env` file:
 | `NETWORK_ENV` | Network environment (mainnet/testnet) | `testnet` |
 | `LOG_LEVEL` | Logging verbosity | `info` |
 
-## Monitoring
+---
 
-Once your validator is running, you can monitor its status:
+## Monitoring
 
 1. View validator logs:
 ```bash
@@ -73,44 +83,52 @@ npm run validator:logs
 npm run validator:status
 ```
 
-3. View network metrics at `http://localhost:8545/metrics`
+3. Metrics available at:
+```
+http://localhost:8545/metrics
+```
+
+---
 
 ## Best Practices
 
-- Regularly update your validator software
-- Monitor system resources
-- Use secure credentials
-- Maintain good network connectivity
-- Back up your validator configuration
+- Use secure credentials and access controls
+- Monitor system performance and logs
+- Keep your node updated with the latest releases
+- Ensure reliable uptime and connectivity
+- Back up your `.env` configuration regularly
+
+---
 
 ## Troubleshooting
 
-Common issues and solutions:
-
 ### Validator Won't Start
-- Check if the port is already in use
-- Verify Node.js version
-- Ensure all dependencies are installed
+- Port might be in use
+- Wrong Node.js version
+- Dependencies not installed properly
 
-### Network Connection Issues
-- Check your firewall settings
-- Verify network configuration
-- Ensure your node can reach other network peers
+### Connection Problems
+- Network or firewall restrictions
+- Incorrect `NETWORK_ENV` config
+- Peering issues
 
 ### Performance Issues
-- Monitor system resources
-- Check log files for errors
-- Verify hardware meets minimum requirements
+- Insufficient hardware
+- Log errors or memory leaks
+- Use monitoring tools to diagnose
+
+---
 
 ## Next Steps
 
-- [Connect to the Network](/dev/connect)
-- [Contribute to Development](/dev/contribute)
 - [Network Architecture](/concepts/network)
+- [Build with Trunk](/dev/quickstart)
+- [MCP Overview](/concepts/mcp)
 
-## Support
+---
 
-If you need help with your validator setup:
-- Join our [Discord](https://discord.gg/trunk)
-- Visit our [GitHub](https://github.com/trunk/network)
-- Check the [Explorer](https://explorer.trunk.com)
+## Need Help?
+
+- Join the [Trunk Discord](https://discord.gg/trunk)
+- Explore the [Trunk GitHub](https://github.com/trunk/network)
+- Visit the [Trunk Explorer](https://explorer.trunk.com)

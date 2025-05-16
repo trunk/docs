@@ -1,6 +1,32 @@
 ---
 title: "Glossary"
-description: ""
+description: "Terminology used in Trunk"
 ---
 
-## A Side-by-Side Look
+# 📘 Glossary
+
+| **Term**                      | **Definition**                                                                                                                                     |
+|------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Trunk Client**             | A lightweight application installed on a user's device that manages local data (e.g. seed phrases, env variables) and communicates with the network. |
+| **MCP (Modular Context Protocol)** | The core protocol that powers Trunk, enabling llms to use tools.                                      |
+| **Solver**                   | A compute node that processes MCP tasks. In the post-testnet phase, solvers compete to return valid results for rewards.                            |
+| **Validator Node**           | A trusted node that verifies and validates solver responses, enforces consensus, and helps maintain network integrity.                             |
+| **TEE (Trusted Execution Environment)** | A secure enclave that executes sensitive code and handles private data in isolation from the host system.                  |
+| **Aethir Cloud**             | A decentralized cloud platform used by Trunk to host TEEs for off-device private computation.                                                      |
+| **Attestation**              | A cryptographic proof that a TEE has executed trusted code in a secure environment without tampering.                                               |
+| **Zero-Knowledge Proof (ZKP)** | A cryptographic method that proves a computation was done correctly without revealing the underlying data.                                          |
+| **Proof of Stake (PoS)**     | A consensus mechanism where validators and solvers are selected based on the amount of tokens they have staked.                                     |
+| **Dispute Resolution**       | A multi-step validation process triggered when solver responses conflict, used to determine the correct result.                                    |
+| **Consensus**                | The process by which validator nodes agree on the correct state of the network or result of a computation.                                          |
+| **Latency**                  | The time delay between a user action and the corresponding network response.                                                                        |
+| **Throughput**               | The number of transactions or requests the network can process per second.                                                                          |
+| **Finality**                 | The time it takes for a transaction or result to be considered irreversible and confirmed.                                                          |
+| **MCP Request**              | A user-initiated task or query sent to the network, processed by one or more solvers.                                                               |
+| **Staking**                  | Locking up tokens as collateral to participate as a validator or solver and earn rewards.                                                           |
+| **Slashing**                 | A penalty mechanism that removes a portion of a staked amount due to malicious behavior or incorrect computation.                                   |
+| **Network State**            | The current operational mode of the network—e.g., NORMAL, CONGESTED, UPGRADING, or RECOVERY.                                                        |
+| **Reputation Score**         | A measure of a solver or validator’s reliability based on historical performance and behavior.                                                      |
+
+---
+
+> 🔍 Don’t see a term listed? [Request a new entry](https://github.com/trunk/docs/issues)
