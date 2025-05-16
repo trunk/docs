@@ -9,8 +9,20 @@ Welcome to Trunk! This guide walks you through integrating a custom MCP (Multi-C
 
 You can find the Trunk SDK on npm at [https://www.npmjs.com/package/@trunkai/trunk-sdk](https://www.npmjs.com/package/@trunkai/trunk-sdk).
 
-```bash
-npm install @trunkai/trunk-sdk
+You can add the precompiled version of the Trunk SDK to your project by adding the following to your mcp client config
+
+```json
+{
+    "mcpServers": {
+        "Trunk": {
+            "command": "npx",
+            "args": [
+                "@trunkai/trunk-sdk"
+            ]
+        }
+    }
+}
+
 ```
 
 ## 🛠 Setup
